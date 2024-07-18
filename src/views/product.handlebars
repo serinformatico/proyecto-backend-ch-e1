@@ -1,0 +1,29 @@
+<header>
+    <h1>PRODUCTO</h1>
+</header>
+
+<main class="container-product">
+    <section class="container-product__details">
+        <h3>Detalles</h3>
+        <ul>
+            <li>ID: <b>{{data._id}}</b></li>
+            <li>Título: <b>{{data.title}}</b></li>
+            <li>Descripción: <b>{{data.description}}</b></li>
+            <li>Código: <b>{{data.code}}</b></li>
+            <li>Precio: $<b>{{data.price}}</b></li>
+            <li>Categoría: <b>{{data.category}}</b></li>
+            <li>Estado: <b>{{#if data.status}}SI{{else}}NO{{/if}}</b></li>
+            <li>Disponibilidad: <b>{{#if data.availability}}SI{{else}}NO{{/if}}</b></li>
+            <li>
+                Imagen:
+                <img src="/public/images/{{data.thumbnail}}" alt="Imagen del producto">
+            </li>
+            <li>Creado: <i>{{data.createdAt}}hs</i></li>
+            <li>Actualizado: <i>{{data.updatedAt}}hs</i></li>
+        </ul>
+
+        <a href="/"><button title="Volver al inicio">↶</button></a>
+    </section>
+</main>
+
+<script src="/public/js/products_with_http.js"></script>

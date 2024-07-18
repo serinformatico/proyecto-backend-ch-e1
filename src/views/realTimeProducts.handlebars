@@ -1,0 +1,80 @@
+<header>
+    <h1>PRODUCTOS EN TIEMPO REAL</h2>
+</header>
+
+<main class="container-products">
+    <section class="container-products__table">
+        <h3>Productos</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody id="products-table-rows"></tbody>
+        </table>
+    </section>
+
+    <section class="container-product__form">
+        <h3>Formulario de Productos</h3>
+        <form id="products-form">
+            <div>
+                <label for="title">Título</label>
+                <input type="text" name="title" id="title" maxlength="25">
+            </div>
+            <div>
+                <label for="description">Descripción</label>
+                <textarea name="description" rows="5"></textarea>
+            </div>
+            <div>
+                <label for="code">Código</label>
+                <input type="text" name="code" id="code">
+            </div>
+            <div>
+                <label for="price">Precio</label>
+                <input type="number" name="price" id="price">
+            </div>
+            <div>
+                <span><input type="checkbox" name="status">Estado</span>
+                <span><input type="checkbox" name="availability">Disponibilidad</span>
+            </div>
+            <div>
+                <label for="stock">Stock</label>
+                <input type="number" name="stock" id="stock">
+            </div>
+            <div>
+                <label for="category">Categoría</label>
+                <select name="category" id="category">
+                    <option value="FEMENINO">FEMENINO</option>
+                    <option value="MASCULINO">MASCULINO</option>
+                    <option value="UNISEX">UNISEX</option>
+                </select>
+            </div>
+            <div>
+                <label for="file">Imagen</label>
+                <input type="file" name="file" id="file" accept=".png,.jpg">
+            </div>
+
+            <input type="submit" value="Guardar" style="width: 100%">
+        </form>
+    </section>
+
+    <section class="container-product__delete">
+        <h3>Eliminación de Producto</h3>
+        <div>
+            <input type="text" id="input-product-id" placeholder="ID del Producto">
+            <button id="btn-delete-product">Eliminar</button>
+        </div>
+    </section>
+
+    <section class="navigation">
+        <div>
+            <a href="/"><button>Volver al inicio</button></a>
+        </div>
+    </section>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/public/js/products_with_websocket.js"></script>
