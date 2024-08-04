@@ -10,12 +10,14 @@ import {
 const router = Router();
 const productManager = new ProductManager();
 
+// Función para manejar los errores y devolver la respuesta adecuada
 const handleError = (res, message) => {
     if (message === ERROR_INVALID_ID) return res.status(400).json({ status: false, message: ERROR_INVALID_ID });
     if (message === ERROR_NOT_FOUND_ID) return res.status(404).json({ status: false, message: ERROR_NOT_FOUND_ID });
     return res.status(500).json({ status: false, message });
 };
 
+// Ruta para obtener todos los productos con la posibilidad de filtrar mediante query params
 router.get("/", async (req, res) => {
     try {
         const products = await productManager.getAll(req.query);
@@ -25,6 +27,7 @@ router.get("/", async (req, res) => {
     }
 });
 
+// Ruta para obtener un producto por su ID
 router.get("/:id", async (req, res) => {
     try {
         const product = await productManager.getOneById(req.params.id);
@@ -34,6 +37,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// Ruta para crear un nuevo producto, permite la subida de archivos
 router.post("/", uploader.single("file"), async (req, res) => {
     try {
         const { file } = req;
@@ -44,6 +48,7 @@ router.post("/", uploader.single("file"), async (req, res) => {
     }
 });
 
+// Ruta para actualizar un producto por su ID, permite la subida de archivos
 router.put("/:id", uploader.single("file"), async (req, res) => {
     try {
         const { file } = req;
@@ -54,6 +59,7 @@ router.put("/:id", uploader.single("file"), async (req, res) => {
     }
 });
 
+// Ruta para eliminar un producto por su ID
 router.delete("/:id", async (req, res) => {
     try {
         const product = await productManager.deleteOneById(req.params.id);

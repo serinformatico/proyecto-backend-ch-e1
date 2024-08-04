@@ -6,14 +6,14 @@ import { connectDB } from "./config/mongoose.config.js";
 import { config as configHandlebars } from "./config/handlebars.config.js";
 import { config as configSocket } from "./config/socket.config.js";
 
-import apiProductRouter from "./routes/api/product.routes.js";
 import apiCartRouter from "./routes/api/cart.routes.js";
+import apiProductRouter from "./routes/api/product.routes.js";
+import cartRouter from "./routes/carts.routes.js";
 import homeRouter from "./routes/home.routes.js";
 import productRouter from "./routes/products.routes.js";
-import cartRouter from "./routes/carts.routes.js";
 
 const server = express();
-
+const x = "alessi";
 // Decodificadores del BODY
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
@@ -31,11 +31,11 @@ configHandlebars(server);
 connectDB();
 
 // Enrutadores
-server.use("/api/products", apiProductRouter);
 server.use("/api/carts", apiCartRouter);
+server.use("/api/products", apiProductRouter);
+server.use("/carts", cartRouter);
 server.use("/", homeRouter);
 server.use("/products", productRouter);
-server.use("/carts", cartRouter);
 
 // Control de rutas inexistentes
 server.use("*", (req, res) => {

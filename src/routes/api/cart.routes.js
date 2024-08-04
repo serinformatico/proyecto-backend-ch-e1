@@ -9,12 +9,14 @@ import {
 const router = Router();
 const cartManager = new CartManager();
 
+// Función para manejar los errores y devolver la respuesta adecuada
 const handleError = (res, message) => {
     if (message === ERROR_INVALID_ID) return res.status(400).json({ status: false, message: ERROR_INVALID_ID });
     if (message === ERROR_NOT_FOUND_ID) return res.status(404).json({ status: false, message: ERROR_NOT_FOUND_ID });
     return res.status(500).json({ status: false, message });
 };
 
+// Ruta para obtener todos los carritos con la posibilidad de filtrar mediante query params
 router.get("/", async (req, res) => {
     try {
         const carts = await cartManager.getAll(req.query);
@@ -24,6 +26,7 @@ router.get("/", async (req, res) => {
     }
 });
 
+// Ruta para obtener un carrito específico por su ID
 router.get("/:id", async (req, res) => {
     try {
         const cart = await cartManager.getOneById(req.params.id);
@@ -33,6 +36,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+// Ruta para crear un nuevo carrito
 router.post("/", async (req, res) => {
     try {
         const cart = await cartManager.insertOne(req.body);
@@ -42,6 +46,7 @@ router.post("/", async (req, res) => {
     }
 });
 
+// Ruta para actualizar un carrito existente por su ID
 router.put("/:id", async (req, res) => {
     try {
         const cart = await cartManager.updateOneById(req.params.id, req.body);
@@ -51,6 +56,7 @@ router.put("/:id", async (req, res) => {
     }
 });
 
+// Ruta para eliminar un carrito por su ID
 router.delete("/:id", async (req, res) => {
     try {
         const cart = await cartManager.deleteOneById(req.params.id);
@@ -60,6 +66,7 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
+// Ruta para incrementar en una unidad o crear un producto específico en un carrito por su ID
 router.put("/:cid/products/:pid", async (req, res) => {
     try {
         const { cid, pid } = req.params;
@@ -71,6 +78,7 @@ router.put("/:cid/products/:pid", async (req, res) => {
     }
 });
 
+// Ruta para decrementar en una unidad o eliminar un producto específico en un carrito por su ID
 router.delete("/:cid/products/:pid", async (req, res) => {
     try {
         const { cid, pid } = req.params;
@@ -81,6 +89,7 @@ router.delete("/:cid/products/:pid", async (req, res) => {
     }
 });
 
+// Ruta para eliminar todos los productos de un carrito específico
 router.delete("/:cid/products", async (req, res) => {
     try {
         const cart = await cartManager.removeAllProducts(req.params.cid);

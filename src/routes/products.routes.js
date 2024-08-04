@@ -9,6 +9,7 @@ import {
 const router = Router();
 const productManager = new ProductManager();
 
+// Ruta para obtener un producto por su ID y mostrarlo en una vista
 router.get("/:id/cart/:rid", async (req, res) => {
     try {
         const { id, rid: cartId } = req.params;

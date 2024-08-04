@@ -11,9 +11,10 @@
             <li>Descripción: <b>{{data.description}}</b></li>
             <li>Código: <b>{{data.code}}</b></li>
             <li>Precio: $<b>{{data.price}}</b></li>
+            <li>Stock: <b>{{data.stock}}</b></li>
             <li>Categoría: <b>{{data.category}}</b></li>
-            <li>Estado: <b>{{#if data.status}}SI{{else}}NO{{/if}}</b></li>
-            <li>Disponibilidad: <b>{{#if data.availability}}SI{{else}}NO{{/if}}</b></li>
+            <li>Estado: <b>{{#if data.status}}HABILITADO{{else}}INHABILITADO{{/if}}</b></li>
+            <li>Disponible: <b>{{#if data.availability}}SI{{else}}NO{{/if}}</b></li>
             <li>
                 Imagen:
                 <img src="/public/images/{{data.thumbnail}}" alt="Imagen del producto">

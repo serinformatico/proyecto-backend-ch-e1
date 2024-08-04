@@ -17,6 +17,7 @@ export default class ProductManager {
         this.#product = Product;
     }
 
+    // Maneja errores específicos de Mongoose (errores de validación)
     #handleError = (error) => {
         if (error instanceof mongoose.Error.ValidationError) {
             throw new Error(Object.values(error.errors)[0].message);
@@ -25,10 +26,12 @@ export default class ProductManager {
         throw new Error(error.message);
     };
 
+    // Valida que el ID proporcionado sea un ID válido de MongoDB
     #validateId = (id) => {
         if (!isValidID(id)) throw new Error(ERROR_INVALID_ID);
     };
 
+    // Busca un producto por su ID
     #findOneById = async (id) => {
         this.#validateId(id);
 
@@ -38,6 +41,7 @@ export default class ProductManager {
         return productFound;
     };
 
+    // Obtiene todos los productos que coinciden opcionalmente con los filtros recibidos
     getAll = async (paramFilters) => {
         try {
             const $and = [];
@@ -59,6 +63,7 @@ export default class ProductManager {
                 lean: true,
             };
 
+            // Busca y pagina todos los productos
             const productsFound = await this.#product.paginate(filters, paginationOptions);
             return productsFound;
         } catch (error) {
@@ -66,6 +71,7 @@ export default class ProductManager {
         }
     };
 
+    // Obtiene un producto por su ID
     getOneById = async (id) => {
         try {
             const productFound = await this.#findOneById(id);
@@ -75,6 +81,7 @@ export default class ProductManager {
         }
     };
 
+    // Inserta un nuevo producto
     insertOne = async (data, filename) => {
         try {
             const product = new Product({
@@ -92,6 +99,7 @@ export default class ProductManager {
         }
     };
 
+    // Actualiza un producto por su ID
     updateOneById = async (id, data, filename) => {
         try {
             const productFound = await this.#findOneById(id);
@@ -119,6 +127,7 @@ export default class ProductManager {
         }
     };
 
+    // Elimina un producto por su ID
     deleteOneById = async (id) => {
         try {
             const productFound = await this.#findOneById(id);

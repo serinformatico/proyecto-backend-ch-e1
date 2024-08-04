@@ -54,7 +54,7 @@ Para instalar y ejecutar el proyecto, sigue estos pasos:
 
 ### URL del proyecto en Vercel
 Puedes acceder a la versión desplegada del proyecto en la siguiente URL:
-[PROYECTO](https://proyecto-backend-ch-e1-lakwp1es4-sergios-projects-23623fb3.vercel.app/)
+[PROYECTO](https://proyecto-backend-ch-e1-git-main-sergios-projects-23623fb3.vercel.app/)
 
 
 
@@ -74,7 +74,7 @@ El proyecto tiene la siguiente estructura de directorios:
     │   ├── images/            # Imágenes de los productos.
     │   └── js/                # Archivos de JavaScript para el FrontEnd.
     ├── routes/                # Rutas del FrontEnd y Backend.
-    │   └── api/               # Rutas específicas de la API.
+    │   └── api/               # Rutas específicas de API.
     ├── utils/                 # Utilidades y funciones auxiliares.
     └── views/                 # Vistas y plantillas para el FrontEnd.
         └── layouts/           # Plantilla base.
