@@ -13,7 +13,7 @@ import homeRouter from "./routes/home.routes.js";
 import productRouter from "./routes/products.routes.js";
 
 const server = express();
-const x = "alessi";
+
 // Decodificadores del BODY
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
