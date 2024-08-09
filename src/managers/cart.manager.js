@@ -110,7 +110,6 @@ export default class CartManager {
             const cartFound = await this.#findOneById(id);
 
             const productIndex = cartFound.products.findIndex((item) => item.product._id.toString() === productId);
-            console.log(productIndex);
 
             if (productIndex >= 0) {
                 cartFound.products[productIndex].quantity += quantity;
