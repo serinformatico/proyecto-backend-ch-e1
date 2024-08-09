@@ -8,8 +8,7 @@
         "start": "node src/server.js",
         "dev": "node --watch --no-warnings ./src/server.js",
         "stop": "killall -9 node",
-        "lint": "eslint ./src --fix",
-        "generate-tree": "tree -I 'node_modules|build' -d"
+        "lint": "eslint ./src --fix"
     },
     "repository": {
         "url": "https://github.com/serinformatico/proyecto-backend-ch-e1.git"
@@ -28,7 +27,6 @@
         "socket.io": "^4.7.5"
     },
     "devDependencies": {
-        "eslint": "^8.57.0",
-        "tree-node-cli": "^1.6.0"
+        "eslint": "^8.57.0"
     }
 }
